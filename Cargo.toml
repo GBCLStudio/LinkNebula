@@ -1,0 +1,24 @@
+[package]
+name = "aether_link"
+version = "0.1.0"
+edition = "2021"
+build = "build.rs"
+
+[workspace]
+members = [
+    "common",
+    "client",
+    "forward",
+    "server",
+]
+
+[dependencies]
+heapless = { version = "0.7", features = ["serde"] }
+zerocopy = "0.6"
+crossbeam = { version = "0.8", optional = true }
+
+[profile.release]
+opt-level = "s"
+debug = false
+lto = true
+codegen-units = 1 
